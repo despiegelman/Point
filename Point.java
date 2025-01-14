@@ -27,8 +27,18 @@ public class Point{
         return(horizontal + vertical);
     }
     public boolean isCollinear(Point p1, Point p2){
-        int slope1 = (p1.getY()-p2.getY())/(p1.getX()-p2.getX());
-        int slope2 = (p1.getY()-this.getY())/(p1.getX()-this.getX());
-        return (slope1-0.01 <= slope2 || slope2 <= slope1+0.01);
+        if (p1.getX()-p2.getX() != 0 && p1.getX()-this.getX() != 0){
+            double slope1 = (double)(p1.getY()-p2.getY())/(p1.getX()-p2.getX());
+            double slope2 = (double)(p1.getY()-this.getY())/(p1.getX()-this.getX());
+            return (slope1-0.01 <= slope2 && slope2 <= slope1+0.01);
+        }
+        else{
+            if ((p1.getX()-p2.getX() == 0) && (p1.getX()-this.getX() == 0)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
     }
 }
